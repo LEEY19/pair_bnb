@@ -1,4 +1,19 @@
 <div class="text-field">
+  <%= form.label :"First Name" %>
+  <%= form.text_field :first_name, type: 'text' %>
+</div>
+
+<div class="text-field">
+  <%= form.label :"Last Name" %>
+  <%= form.text_field :last_name, type: 'text' %>
+</div>
+
+<div class="text-field">
+  <%= form.label :birthday %>
+  <%= form.date_select :birthday, type: 'date' %>
+</div>
+
+<div class="text-field">
   <%= form.label :email %>
   <%= form.text_field :email, type: 'email' %>
 </div>
