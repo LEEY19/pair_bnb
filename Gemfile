@@ -17,6 +17,13 @@ gem 'coffee-rails', '~> 4.1.0'
 #user management gem
 gem "clearance"
 
+#for security
+gem "figaro"
+
+#for facebook login
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

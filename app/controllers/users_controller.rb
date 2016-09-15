@@ -5,7 +5,8 @@ class UsersController < Clearance::UsersController
 
     if @user.save
       sign_in @user
-      redirect_back_or url_after_create 
+      @users = User.all
+      redirect_to welcome_home_url
     else
       render template: "users/new"
     end
@@ -13,7 +14,9 @@ class UsersController < Clearance::UsersController
 
   private
 
-  def user_params
+  def user_params   
     params.require(:user).permit(:email, :password, :first_name, :last_name, :birthday)
   end
+
+
 end

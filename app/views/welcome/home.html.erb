@@ -1,2 +1,10 @@
-<h1>Welcome# to asdfasdf</h1>
-<p>Find me in app/views/welcome/home.html.erb</p>
+<h1>Welcome to PairBnB</h1>
+
+  <h2> Existing Users: </h2>
+  <% @users.each do |user| %>
+  <div>
+  <%= "#{user.first_name} #{user.last_name}" %>
+  </div>
+  <% end %>
+
+
