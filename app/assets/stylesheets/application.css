@@ -10,6 +10,22 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
+
+li {
+  margin-right: 50px;
+}
+
+.home {
+  font-size: 24px;
+}
+
+.nav_user {
+  margin-top: 15px;
+  color: white;
+  font-family: Georgia;
+}
+
+

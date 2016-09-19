@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tag %>
+  <meta name="viewport", content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div id="header">
-    <% if signed_in? -%>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
-    <% else -%>
-      <%= link_to t(".sign_in"), sign_in_path %>
-    <% end -%>
+  <nav class="navbar navbar-inverse">
+    <div id="header" class="row">
+      <ul class="nav navbar-nav navbar-left">
+        <li class="home"><%= link_to "PairBnB", root_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if signed_in? -%>
+          <li class="nav_user"><span class="glyphicon glyphicon-user"><%= " #{current_user.first_name} #{current_user.last_name}" %></span></li>
+          <li><%= link_to t(".sign_out"), sign_out_path, method: :delete %></li>
+        <% else -%>
+          <li><%= link_to t(".sign_in"), sign_in_path %></li>
+        <% end -%>
+      </ul>
+    </div>
+  </nav>  
+    <div id="flash" class="container">
+      <% flash.each do |key, value| -%>
+        <div id="flash_<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-8""></div>
+    <%= yield %>
+      </div>
+    </div>
   </div>
-
-  <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-    <% end %>
-  </div>
-
-  <%= yield %>
 </body>
 </html>

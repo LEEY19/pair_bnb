@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   before_action :authenticate_user
 
   def home
-    @users = User.all
+    @users = User.all.order("created_at DESC")
   end
 
   def authenticate_user
