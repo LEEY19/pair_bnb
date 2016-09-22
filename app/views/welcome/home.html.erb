@@ -1,9 +1,12 @@
-<h1>Welcome to PairBnB</h1>
-<h2> Existing Users: </h2>
-  <% @users.each do |user| %>
-<div>
-  <%= "#{user.first_name} #{user.last_name}" %>
-</div>
-  <% end %>
+<h4><%= link_to "Go to all Listings", listings_path, class: "btn btn-info"  %></h4>
 
+  <div class="intro_page">
+    <h1>Welcome to PairBnB</h1>
+  </div>
+  <br>
+  <br>
 
+  <%= current_user.email%>
+  <%= image_tag current_user.avatar.url(:thumb) %>
+
+  

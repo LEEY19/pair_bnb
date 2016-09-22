@@ -1,0 +1,15 @@
+<h4><%= link_to "Back to all listings", listings_path, class: "btn btn-info"  %></h4>
+<h1>My reservations</h1>
+
+<% @reservations.each do |reservation| %>
+<% if reservation.listing.images.present? %>
+  <%= image_tag reservation.listing.images[0].url(:thumb) %>
+<% else %>
+  <p>No Image</p>
+<% end %>
+  <h3><%= reservation.listing.title %></h3>
+  <p>Booked By:<%= reservation.user.email %></p>
+  <p>Reservation Id: <%= reservation.id %></p>
+  <p>Check In Date:<%= reservation.start_date %></p>
+  <p>Check Out Date:<%= reservation.end_date %></p><br><hr>
+  <% end %>

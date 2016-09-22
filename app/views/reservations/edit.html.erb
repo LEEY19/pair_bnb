@@ -1,0 +1,18 @@
+
+<div id="clearance" class="reserve">
+      <h2><%= t(".Book") %></h2>
+      <%= form_for @reservation, url:listing_reservations_path do |form| %>
+  <div class="text-field">
+    <%= form.label :"Check In Date" %>
+    <%= form.date_select :start_date, type: 'text', class:"form-control" %>
+  </div>
+
+  <div class="text-field">
+    <%= form.label :"Check Out Date" %>
+    <%= form.date_select :end_date, type: 'text', class: "form-control" %>
+  </div>
+  <div class="submit-field">
+    <%= form.submit "Book", class: "btn btn-primary" %>
+  </div>
+</div>
+<% end %>

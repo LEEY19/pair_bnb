@@ -14,8 +14,18 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
+gem 'mini_magick'
+
 #user management gem
 gem "clearance"
+
+#for generating forms
+gem 'simple_form'
+
+#to make listings taggable
+gem 'acts-as-taggable-on', '~> 4.0'
 
 #for security
 gem "figaro"

@@ -1,0 +1,29 @@
+<h1><%= @listing.title %></h1>
+  <% if @listing.images[0].present? %>
+    <%= image_tag @listing.images[0].url(:medium) %>
+  <% end %>
+  <% if @listing.images[1].present? %>
+    <%= image_tag @listing.images[1].url(:medium) %>
+  <% end %>
+  <% if @listing.images[2].present? %>
+    <%= image_tag @listing.images[2].url(:medium) %>
+  <% end %><br>
+
+  <%= link_to "Book", "/listings/#{@listing.id}/reservations/new", class: "btn btn-danger" %><br><br>
+  
+    <p><span class="lead">Description:</span><%= @listing.description %></p>
+    <p><span class="lead">State:</span><%= @listing.state %></p>
+    <p><span class="lead">Address:</span><%= @listing.address %></p>
+    <p><span class="lead">Pets allowed:</span><%= @listing.pet %></p>
+    <p><span class="lead">Smoking allowed:</span><%= @listing.smoking %></p>
+    <p><span class="lead">Max No. of guests:</span><%= @listing.max_guest %></p>
+    <p><span class="lead">Price P/Night:</span>RM<%= @listing.price %></p>
+    <br>
+
+Submitted by: <%= @listing.user.email %><br>
+
+<% if current_user.id == @listing.user.id %>
+<%= link_to "Edit", listing_edit_path, class: "btn btn-info" %>
+<%= link_to "Delete", listing_delete_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-warning" %>
+<% end %>
+<%= link_to "Back", listings_path, class: "btn btn-info" %>

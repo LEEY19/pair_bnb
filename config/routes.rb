@@ -17,10 +17,22 @@ Rails.application.routes.draw do
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  get '/listings' => "listings#index"
+  get '/listings/new'
+  post '/listings' => "listings#create"
+  get 'listings/:id' => "listings#show", as: "listing"
+  get '/listings/:id/edit' => "listings#edit", as: "listing_edit"
+  patch '/listings/:id' => "listings#update", as: "listing_update"
+  delete 'listings/:id' => "listings#destroy", as: "listing_delete"
 
-  # You can have the root of your site routed with "root"
+  get 'tags/:tag', to: 'listings#index', as: :tag 
+
+  resources :listings do
+  resources :reservations, only: [:new, :create]
+  end
+
+  resources :reservations, except: [:new, :create]
+
   root 'welcome#home'
 
   # Example of regular route:

@@ -1,0 +1,26 @@
+<%= link_to "Create a new listing", listings_new_path %>
+<h4><%= link_to "My Reservations", reservations_path, class: "btn btn-warning" %></h4>
+
+<h4><%= link_to "All Listings", listings_path, class: "btn btn-info"  %></h4><br>
+
+<div id="tag_cloud">
+  <p>Popular Filters:</p>
+  <% tag_cloud Listing.tag_counts, %w[s, m, l] do |tag, css_class| %>
+  <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+<br>
+<hr>
+
+<h3>Listings:</h3>
+  <% @listings.each do |listing| %>
+    <% if listing.images.present? %>
+      <p><%= image_tag listing.images[0].url(:medium) %></p> 
+    <% else %>
+      <p>No image</p>
+    <% end %>
+    <p>Title: <%= link_to listing.title, listing %></p>
+    <p>Description: <%= listing.description %></p>
+    <p>Tags: <%= raw listing.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
+    <br>
+    <% end %>
